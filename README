@@ -1,1 +1,5 @@
 This gem contains Mongoid step definitions for Cucumber.
+
+Note this is for Mongoid 2.x only, and the generators are for Rails 3 only.
+
+This is a work in progress, not ready for developer use yet.
