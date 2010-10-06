@@ -8,9 +8,6 @@ Feature: Create Root Document From Table
     Given the following person document:
       | title        | dob        |
       | Grand Poobah | 1976/10/31 |
-
-  Scenario: Create Multiple Documents
-    Given the following person documents:
-      | title | dob        |
-      | King  | 1976/1/1   |
-      | Queen | 1970/10/31 |
+    Then a person document should be persisted with:
+      | title        | dob        |
+      | Grand Poobah | 1976/10/31 |
