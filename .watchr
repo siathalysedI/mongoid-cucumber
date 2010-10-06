@@ -4,12 +4,12 @@ def run(cmd)
   system cmd
 end
 
+def feature(file)
+  run("cucumber #{file}") if File.exists?(file)
+end
+
 def spec(file)
-  if File.exists?(file)
-    run("rspec #{file}")
-  else
-    puts("Spec: #{file} does not exist.")
-  end
+  run("rspec #{file}") if File.exists?(file)
 end
 
 watch("spec/.*/*_spec\.rb") do |match|
@@ -20,4 +20,9 @@ end
 watch("lib/(.*/.*)\.rb") do |match|
   puts(match[1])
   spec("spec/#{match[1]}_spec.rb")
+end
+
+watch("features/.*.feature") do |match|
+  puts(match[0])
+  feature(match[0])
 end
