@@ -28,7 +28,11 @@ module Mongoid # :nodoc:
         #
         # @return [ TrueClass, FalseClass ] do the all the documents exist?
         def matches?
-          model.where(table.hashes.first).exists?
+          true.tap do
+            table.hashes.each do |attributes|
+              return false unless model.where(attributes).exists?
+            end
+          end
         end
       end
     end
