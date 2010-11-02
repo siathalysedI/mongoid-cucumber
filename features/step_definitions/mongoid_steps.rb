@@ -26,7 +26,7 @@ end
 #
 # @param [ String ] model The name of the model to create.
 # @param [ Table ] table The table of values.
-Given /^the following (.+) documents:$/ do |model, table|
+Given %r{^the following (.+) documents:$} do |model, table|
   factory.create_all(model, table).tap do |documents|
     instance_variable_set("@#{model.pluralize}", documents)
   end
@@ -60,6 +60,6 @@ end
 #
 # @param [ String ] model The name of the model to create.
 # @param [ Table ] table The table of values.
-Then /^(.+) documents should be persisted with:$/ do |model, table|
+Then %r{^(.+) documents should be persisted with:$} do |model, table|
   matchers.exists?(model, table).should be_true
 end
