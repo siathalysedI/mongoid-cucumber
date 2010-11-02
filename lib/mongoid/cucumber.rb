@@ -1,4 +1,5 @@
 # encoding: utf-8
+#
 # Copyright (c) 2009, 2010 Durran Jordan
 #
 # Permission is hereby granted, free of charge, to any person obtaining
@@ -21,4 +22,7 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 require "cucumber"
 require "mongoid/cucumber/factory"
+require "mongoid/cucumber/matchers"
+require "mongoid/cucumber/utils"
 require "mongoid/cucumber/version"
+require "mongoid/cucumber/world"

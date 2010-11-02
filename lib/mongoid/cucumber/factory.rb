@@ -7,20 +7,15 @@ module Mongoid # :nodoc:
       # Create a new persisted document based on the model name and given the
       # supplied attributes in a table.
       #
-      # Example:
+      # @example Create a document using the factory
+      #   Factory.create("person", table)
       #
-      # <tt>Factory.create("person", table)</tt>
+      # @param [ String ] model The name of the model
+      # @param [ Table ] table The table to generate from.
       #
-      # Params:
-      #
-      # model: The name of the model
-      # table: A +Cucumber::Ast::Table+
-      #
-      # Returns:
-      #
-      # A newly persisted document.
+      # @return [ Document ] A newly persisted document.
       def create(name, table)
-        model(name).new(table.hashes.first).tap do |document|
+        Utils.model(name).new(table.hashes.first).tap do |document|
           document.save
         end
       end
@@ -28,39 +23,15 @@ module Mongoid # :nodoc:
       # Create a new document based on the model name and given the supplied
       # attributes in a table.
       #
-      # Example:
+      # @example Instantiate a new document.
+      #   Factory.create("person", table)
       #
-      # <tt>Factory.create("person", table)</tt>
+      # @param [ String ] model The name of the model
+      # @param [ Table ] table The table to generate from
       #
-      # Params:
-      #
-      # model: The name of the model
-      # table: A +Cucumber::Ast::Table+
-      #
-      # Returns:
-      #
-      # A newly persisted document.
+      # @return [ Document ] A new document.
       def instantiate(name, table)
-        model(name).new(table.hashes.first)
-      end
-
-      private
-
-      # Determine the class of the model based on the name provided.
-      #
-      # Example:
-      #
-      # <tt>Factory.model("person")</tt>
-      #
-      # Params:
-      #
-      # name: String for the model name.
-      #
-      # Returns:
-      #
-      # The class for the model.
-      def model(name)
-        name.gsub(/\W+/, '_').classify.constantize
+        Utils.model(name).new(table.hashes.first)
       end
     end
   end
