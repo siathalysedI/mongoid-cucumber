@@ -18,7 +18,7 @@ end
 #
 # @example Steps for generating multiple documents
 #   Scenario: Create Multiple Documents
-#     Given the following persons documents:
+#     Given the following person documents:
 #       | title        | dob        |
 #       | Grand Poobah | 1976/10/31 |
 #       | King         | 1972/01/30 |
