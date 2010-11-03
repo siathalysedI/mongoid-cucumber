@@ -41,18 +41,8 @@ end
 #       | title        | dob        |
 #       | Grand Poobah | 1976/10/31 |
 #
-# @param [ String ] model The name of the model to create.
-# @param [ Table ] table The table of values.
-Then %r{a (.+) document should be persisted with:$} do |model, table|
-  matchers.exists?(model, table).should be_true
-end
-
-# Used for determining if documents with specific attributes exist in the
-# database.
-#
-# @example Steps for checking a document's existence.
-#   Scenario: Check For A Document
-#     Then a person document should be persisted with:
+#   Scenario: Check For Documents
+#     Then person documents should be persisted with:
 #       | title        | dob        |
 #       | Grand Poobah | 1976/10/31 |
 #       | King         | 1972/01/30 |
@@ -60,6 +50,6 @@ end
 #
 # @param [ String ] model The name of the model to create.
 # @param [ Table ] table The table of values.
-Then %r{^(.+) documents should be persisted with:$} do |model, table|
+Then %r{a?\s?(.+) documents? should be persisted with:$} do |model, table|
   matchers.exists?(model, table).should be_true
 end
